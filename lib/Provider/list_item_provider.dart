@@ -155,7 +155,7 @@ class ListItemProvider extends ChangeNotifier {
   void checkForYAxisMovement({required int listIndex, required int itemIndex}) {
     var prov = ref.read(ProviderList.boardProvider);
     var item = prov.board.lists[listIndex].items[itemIndex];
-
+    
     bool willPlaceHolderAtBottom = false;
     bool willPlaceHolderAtTop = false;
     willPlaceHolderAtBottom = ((itemIndex ==

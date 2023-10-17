@@ -74,13 +74,21 @@ class _ItemState extends ConsumerState<Item> {
 
             if (cardProv.getYAxisCondition(
                 listIndex: widget.listIndex, itemIndex: widget.itemIndex)) {
-            // log("Y AXIS CONDITION");
-              cardProv.checkForYAxisMovement(
-                  listIndex: widget.listIndex, itemIndex: widget.itemIndex);
+              // log("Y AXIS CONDITION");
+              var prov = ref.read(ProviderList.boardProvider);
+
+              if (widget.listIndex != prov.draggedItemState!.listIndex) {
+                cardProv.checkForYAxisMovement(
+                    listIndex: widget.listIndex, itemIndex: widget.itemIndex);
+              }
             } else if (cardProv.getXAxisCondition(
                 listIndex: widget.listIndex, itemIndex: widget.itemIndex)) {
-              cardProv.checkForXAxisMovement(
+              print(
+                  "HERE IS Y AXIS CONDITION ###### ${widget.listIndex} ${widget.itemIndex} ${prov.draggedItemState!.listIndex}");
+              if(prov.draggedItemState!.listIndex! <= widget.listIndex){
+                cardProv.checkForXAxisMovement(
                   listIndex: widget.listIndex, itemIndex: widget.itemIndex);
+              }
             }
           }
           return b!;
@@ -112,9 +120,7 @@ class _ItemState extends ConsumerState<Item> {
                 )
               : cardProv.isCurrentElementDragged(
                       listIndex: widget.listIndex, itemIndex: widget.itemIndex)
-                  ? Container(
-                    
-                      )
+                  ? Container()
                   : Container(
                       margin: const EdgeInsets.only(bottom: 10),
                       width: prov.board.lists[widget.listIndex]

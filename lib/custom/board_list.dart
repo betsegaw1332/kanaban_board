@@ -262,10 +262,10 @@ class _BoardListState extends ConsumerState<BoardList> {
                 : Column(key: ValueKey("LIST ${widget.index}"), children: [
                     GestureDetector(
                       onLongPress: () {
-                        listProv.onListLongpress(
-                            listIndex: widget.index,
-                            context: context,
-                            setstate: () => setState(() {}));
+                        // listProv.onListLongpress(
+                        //     listIndex: widget.index,
+                        //     context: context,
+                        //     setstate: () => setState(() {}));
                       },
                       child: Container(
                         width: prov.board.lists[widget.index].width,
