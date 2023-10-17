@@ -155,7 +155,9 @@ class ListItemProvider extends ChangeNotifier {
   void checkForYAxisMovement({required int listIndex, required int itemIndex}) {
     var prov = ref.read(ProviderList.boardProvider);
     var item = prov.board.lists[listIndex].items[itemIndex];
+
     
+
     bool willPlaceHolderAtBottom = false;
     bool willPlaceHolderAtTop = false;
     willPlaceHolderAtBottom = ((itemIndex ==
@@ -371,7 +373,7 @@ class ListItemProvider extends ChangeNotifier {
     // prov.board.lists[listIndex].items[itemIndex].width = box.size.width;
     // prov.board.lists[listIndex].items[itemIndex].height = box.size.height;
     prov.updateValue(
-        dx: location.dx, dy: location.dy - prov.board.displacementY!);
+        dx: prov.board.lists[listIndex].items[itemIndex].x!, dy: location.dy - prov.board.displacementY!);
     prov.board.dragItemIndex = itemIndex;
     prov.board.dragItemOfListIndex = listIndex;
     prov.board.isElementDragged = true;
