@@ -58,7 +58,6 @@ class _BoardListState extends ConsumerState<BoardList> {
               // print(prov.board.lists[widget.index].items.length);
               // CASE: WHEN ELEMENT IS DRAGGED RIGHT SIDE AND LIST HAVE NO ELEMENT IN IT //
               if (prov.board.lists[widget.index].items.isEmpty) {
-
                 log("LIST 0 RIGHT");
                 prov.move = "REPLACE";
                 prov.board.lists[widget.index].items.add(ListItem(
@@ -85,13 +84,14 @@ class _BoardListState extends ConsumerState<BoardList> {
                           .items[prov.board.dragItemIndex!].prevChild;
                   prov.board.lists[prov.board.dragItemOfListIndex!]
                       .items[prov.board.dragItemIndex!].setState!();
-                          if (prov.board.lists[prov.board.dragItemOfListIndex!]
+                  if (prov.board.lists[prov.board.dragItemOfListIndex!]
                           .items[prov.board.dragItemIndex!].addedBySystem ==
                       true) {
                     prov.board.lists[prov.board.dragItemOfListIndex!].items
                         .removeAt(0);
                     log("ITEM REMOVED");
-                    prov.board.lists[prov.board.dragItemOfListIndex!].setState!();
+                    prov.board.lists[prov.board.dragItemOfListIndex!]
+                        .setState!();
                   }
                   prov.board.dragItemIndex = 0;
                   prov.board.dragItemOfListIndex = widget.index;
@@ -144,7 +144,7 @@ class _BoardListState extends ConsumerState<BoardList> {
               if (prov.board.lists[widget.index].items.isEmpty) {
                 prov.move = "REPLACE";
                 //  print("LIST 0 LEFT");
-  
+
                 prov.board.lists[widget.index].items.add(ListItem(
                     child: Container(
                       decoration: BoxDecoration(
@@ -176,7 +176,8 @@ class _BoardListState extends ConsumerState<BoardList> {
                     prov.board.lists[prov.board.dragItemOfListIndex!].items
                         .removeAt(0);
                     log("ITEM REMOVED");
-                    prov.board.lists[prov.board.dragItemOfListIndex!].setState!();
+                    prov.board.lists[prov.board.dragItemOfListIndex!]
+                        .setState!();
                   }
                   prov.board.dragItemIndex = 0;
                   prov.board.dragItemOfListIndex = widget.index;
@@ -223,7 +224,7 @@ class _BoardListState extends ConsumerState<BoardList> {
           return b!;
         },
         child: Container(
-          padding: const EdgeInsets.only(left: 15, right: 15),
+          padding: const EdgeInsets.only(left: 0, right: 0),
           margin: const EdgeInsets.only(right: 30, top: 20, bottom: 15),
           width: prov.board.lists[widget.index].width!,
           decoration: prov.board.listDecoration ??
@@ -260,75 +261,75 @@ class _BoardListState extends ConsumerState<BoardList> {
                         : null,
                   )
                 : Column(key: ValueKey("LIST ${widget.index}"), children: [
-                    GestureDetector(
-                      onLongPress: () {
-                        // listProv.onListLongpress(
-                        //     listIndex: widget.index,
-                        //     context: context,
-                        //     setstate: () => setState(() {}));
-                      },
-                      child: Container(
-                        width: prov.board.lists[widget.index].width,
-                        color: prov
-                            .board.lists[widget.index].headerBackgroundColor,
-                        margin: const EdgeInsets.only(bottom: 0),
-                        padding: const EdgeInsets.only(
-                            left: 15, bottom: 10, top: 10, right: 0),
-                        alignment: Alignment.centerLeft,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              prov.board.lists[widget.index].title,
-                              style: prov.board.textStyle ??
-                                  const TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(
-                                // padding: const EdgeInsets.all(5),
-                                child: PopupMenuButton(
-                                    constraints: BoxConstraints(
-                                      minWidth: prov.board.lists[widget.index]
-                                              .width! *
-                                          0.7,
-                                      maxWidth: prov.board.lists[widget.index]
-                                              .width! *
-                                          0.7,
-                                    ),
-                                    itemBuilder: (ctx) {
-                                      return [
-                                        PopupMenuItem(
-                                          value: 1,
-                                          child: Text(
-                                            "Add card",
-                                            style: prov.board.textStyle,
-                                          ),
-                                        ),
-                                        PopupMenuItem(
-                                          value: 2,
-                                          child: Text(
-                                            "Delete List",
-                                            style: prov.board.textStyle,
-                                          ),
-                                        ),
-                                      ];
-                                    },
-                                    onSelected: (value) async {
-                                      if (value == 1) {
-                                        listProv.addNewCard(
-                                            position: "TOP",
-                                            listIndex: widget.index);
-                                      } else if (value == 2) {
-                                        prov.board.lists.removeAt(widget.index);
-                                        prov.board.setstate!();
-                                      }
-                                    })),
-                          ],
-                        ),
-                      ),
-                    ),
+                    //  prov.board.lists[widget.index].footer??GestureDetector(
+                    //   onLongPress: () {
+                    //     // listProv.onListLongpress(
+                    //     //     listIndex: widget.index,
+                    //     //     context: context,
+                    //     //     setstate: () => setState(() {}));
+                    //   },
+                    //   child: Container(
+                    //     width: prov.board.lists[widget.index].width,
+                    //     color: prov
+                    //         .board.lists[widget.index].headerBackgroundColor,
+                    //     margin: const EdgeInsets.only(bottom: 0),
+                    //     padding: const EdgeInsets.only(
+                    //         left: 15, bottom: 10, top: 10, right: 0),
+                    //     alignment: Alignment.centerLeft,
+                    //     child: Row(
+                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //       children: [
+                    //         Text(
+                    //           prov.board.lists[widget.index].title,
+                    //           style: prov.board.textStyle ??
+                    //               const TextStyle(
+                    //                   fontSize: 17,
+                    //                   color: Colors.black,
+                    //                   fontWeight: FontWeight.w500),
+                    //         ),
+                    //         SizedBox(
+                    //             // padding: const EdgeInsets.all(5),
+                    //             child: PopupMenuButton(
+                    //                 constraints: BoxConstraints(
+                    //                   minWidth: prov.board.lists[widget.index]
+                    //                           .width! *
+                    //                       0.7,
+                    //                   maxWidth: prov.board.lists[widget.index]
+                    //                           .width! *
+                    //                       0.7,
+                    //                 ),
+                    //                 itemBuilder: (ctx) {
+                    //                   return [
+                    //                     PopupMenuItem(
+                    //                       value: 1,
+                    //                       child: Text(
+                    //                         "Add card",
+                    //                         style: prov.board.textStyle,
+                    //                       ),
+                    //                     ),
+                    //                     PopupMenuItem(
+                    //                       value: 2,
+                    //                       child: Text(
+                    //                         "Delete List",
+                    //                         style: prov.board.textStyle,
+                    //                       ),
+                    //                     ),
+                    //                   ];
+                    //                 },
+                    //                 onSelected: (value) async {
+                    //                   if (value == 1) {
+                    //                     listProv.addNewCard(
+                    //                         position: "TOP",
+                    //                         listIndex: widget.index);
+                    //                   } else if (value == 2) {
+                    //                     prov.board.lists.removeAt(widget.index);
+                    //                     prov.board.setstate!();
+                    //                   }
+                    //                 })),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                     Expanded(
                       child: MediaQuery.removePadding(
                         context: context,
@@ -351,39 +352,39 @@ class _BoardListState extends ConsumerState<BoardList> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 15),
-                      height: 45,
-                      width: prov.board.lists[widget.index].width,
-                      color:
-                          prov.board.lists[widget.index].footerBackgroundColor,
-                      child: GestureDetector(
-                        onTap: () async {
-                          listProv.addNewCard(
-                              position: "LAST", listIndex: widget.index);
-                        },
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.add,
-                              color: Colors.black,
-                              size: 22,
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'NEW',
-                              style: prov.board.textStyle ??
-                                  const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
+                    // Container(
+                    //   padding: const EdgeInsets.only(left: 15),
+                    //   height: 45,
+                    //   width: prov.board.lists[widget.index].width,
+                    //   color:
+                    //       prov.board.lists[widget.index].footerBackgroundColor,
+                    //   child: GestureDetector(
+                    //     onTap: () async {
+                    //       listProv.addNewCard(
+                    //           position: "LAST", listIndex: widget.index);
+                    //     },
+                    //     child: Row(
+                    //       children: [
+                    //         const Icon(
+                    //           Icons.add,
+                    //           color: Colors.black,
+                    //           size: 22,
+                    //         ),
+                    //         const SizedBox(
+                    //           width: 5,
+                    //         ),
+                    //         Text(
+                    //           'NEW ITEM',
+                    //           style: prov.board.textStyle ??
+                    //               const TextStyle(
+                    //                   color: Colors.black,
+                    //                   fontSize: 17,
+                    //                   fontWeight: FontWeight.w500),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // )
                   ]),
           ),
         ));

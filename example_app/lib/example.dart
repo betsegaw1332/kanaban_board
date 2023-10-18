@@ -13,9 +13,13 @@ class _ExampleState extends State<Example> {
   @override
   Widget build(BuildContext context) {
     return KanbanBoard(
+      
       List.generate(
         8,
         (index) => BoardListsData(
+          backgroundColor: Colors.white,
+          header: Text('Header'),
+          footer: Text('Footer'),
             items: List.generate(
           50,
           (index) => Container(
