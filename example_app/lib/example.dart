@@ -41,10 +41,12 @@ class _ExampleState extends State<Example> {
       onItemLongPress: (cardIndex, listIndex) {},
       onItemReorder:
           (oldCardIndex, newCardIndex, oldListIndex, newListIndex) {
-            
+             print("OLD CARD INDEX #### $oldCardIndex NEW CARD INDEX $newCardIndex");
           },
       onListLongPress: (listIndex) {},
-      onListReorder: (oldListIndex, newListIndex) {},
+      onListReorder: (oldListIndex, newListIndex) {
+        
+      },
       onItemTap: (cardIndex, listIndex) {},
       onListTap: (listIndex) {},
       onListRename: (oldName, newName) {},

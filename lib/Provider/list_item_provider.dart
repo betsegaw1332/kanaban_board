@@ -156,20 +156,20 @@ class ListItemProvider extends ChangeNotifier {
     var prov = ref.read(ProviderList.boardProvider);
     var item = prov.board.lists[listIndex].items[itemIndex];
 
-    
-
     bool willPlaceHolderAtBottom = false;
     bool willPlaceHolderAtTop = false;
     willPlaceHolderAtBottom = ((itemIndex ==
             prov.board.lists[listIndex].items.length - 1) &&
         ((prov.draggedItemState!.height * 0.6) + prov.valueNotifier.value.dy >
             item.y! + item.height!) &&
-        !item.bottomPlaceholder! && prov.board.lists[listIndex].items[itemIndex].addedBySystem!=true );
+        !item.bottomPlaceholder! &&
+        prov.board.lists[listIndex].items[itemIndex].addedBySystem != true);
 
     willPlaceHolderAtTop =
         ((prov.valueNotifier.value.dy < item.y! + (item.height! * 0.5)) &&
-            (prov.draggedItemState!.height + prov.valueNotifier.value.dy >
-                item.y! + (item.height! * 0.5)))&& prov.board.lists[listIndex].items[itemIndex].addedBySystem!=true;
+                (prov.draggedItemState!.height + prov.valueNotifier.value.dy >
+                    item.y! + (item.height! * 0.5))) &&
+            prov.board.lists[listIndex].items[itemIndex].addedBySystem != true;
 
     // print(willPlaceHolderAtTop);
     if (((willPlaceHolderAtTop || willPlaceHolderAtBottom) &&
@@ -373,7 +373,8 @@ class ListItemProvider extends ChangeNotifier {
     // prov.board.lists[listIndex].items[itemIndex].width = box.size.width;
     // prov.board.lists[listIndex].items[itemIndex].height = box.size.height;
     prov.updateValue(
-        dx: prov.board.lists[listIndex].items[itemIndex].x!, dy: location.dy - prov.board.displacementY!);
+        dx: prov.board.lists[listIndex].items[itemIndex].x!,
+        dy: location.dy - prov.board.displacementY!);
     prov.board.dragItemIndex = itemIndex;
     prov.board.dragItemOfListIndex = listIndex;
     prov.board.isElementDragged = true;
@@ -409,8 +410,7 @@ class ListItemProvider extends ChangeNotifier {
         .items[boardProv.board.newCardIndex!].child = Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade200),
-        borderRadius: BorderRadius.circular(4
-        ),
+        borderRadius: BorderRadius.circular(4),
         color: Colors.white,
       ),
       margin: const EdgeInsets.only(bottom: 10),
@@ -467,9 +467,15 @@ class ListItemProvider extends ChangeNotifier {
               : boardProv.board.dragItemIndex!,
           boardProv.board.lists[boardProv.draggedItemState!.listIndex!].items
               .removeAt(boardProv.draggedItemState!.itemIndex!));
+
       // dev.log(
       // "LENGTH= ${prov.board.lists[prov.board.dragItemOfListIndex!].items.length}");
     }
+    boardProv.board.onItemReorder!(
+        boardProv.board.dragItemOfListIndex!,
+        boardProv.board.dragItemOfListIndex!,
+        boardProv.board.dragItemOfListIndex!,
+        boardProv.board.dragItemOfListIndex!);
     // prov.board.lists[prov.board.dragItemOfListIndex!].setState! ();
   }
 }
