@@ -284,11 +284,11 @@ class _BoardState extends ConsumerState<Board> {
           }
         },
         child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           body: Container(
             decoration: widget.boardDecoration ??
                 BoxDecoration(color: widget.backgroundColor),
-            margin: const EdgeInsets.only(top: 24),
+            margin: const EdgeInsets.only(top: 0),
             child: Stack(
               fit: StackFit.passthrough,
               clipBehavior: Clip.none,
@@ -297,7 +297,7 @@ class _BoardState extends ConsumerState<Board> {
                   children: [
                     Expanded(
                       child: Container(
-                        margin: const EdgeInsets.only(left: 20),
+                        margin: const EdgeInsets.only(left: 0),
                         //width: 200,
                         height: 1200,
                         child: ScrollConfiguration(
@@ -417,37 +417,7 @@ class _BoardState extends ConsumerState<Board> {
                                                                   ],
                                                                 ),
                                                               )
-                                                            : GestureDetector(
-                                                                onTap: () {
-                                                                  if (boardProv
-                                                                          .board
-                                                                          .newCardFocused ==
-                                                                      true) {
-                                                                    ref
-                                                                        .read(ProviderList
-                                                                            .cardProvider)
-                                                                        .saveNewCard();
-                                                                  }
-                                                                  boardListProv
-                                                                          .newList =
-                                                                      true;
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                child: Container(
-                                                                    height: 50,
-                                                                    width: 300,
-                                                                    margin: const EdgeInsets.only(top: 20, right: 20),
-                                                                    decoration: BoxDecoration(
-                                                                        color: const Color.fromARGB(
-                                                                          255,
-                                                                          247,
-                                                                          248,
-                                                                          252,
-                                                                        ),
-                                                                        borderRadius: BorderRadius.circular(6)),
-                                                                    child: Center(child: Text("Add List", style: widget.textStyle))),
-                                                              )
+                                                            :SizedBox.shrink()
                                                       ],
                                                     ))
                                       .toList()),

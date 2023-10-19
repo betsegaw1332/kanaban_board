@@ -17,14 +17,12 @@ class _ExampleState extends State<Example> {
       List.generate(
         8,
         (index) => BoardListsData(
-          backgroundColor: Colors.white,
-          header: Text('Header'),
-          footer: Text('Footer'),
+          backgroundColor: Colors.transparent,
             items: List.generate(
           50,
           (index) => Container(
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.red,
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(
                   color: Colors.grey.shade200,
@@ -49,7 +47,7 @@ class _ExampleState extends State<Example> {
       onItemTap: (cardIndex, listIndex) {},
       onListTap: (listIndex) {},
       onListRename: (oldName, newName) {},
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       displacementY: 124,
       displacementX: 100,
       textStyle: const TextStyle(
