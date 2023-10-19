@@ -17,6 +17,7 @@ class _ExampleState extends State<Example> {
       List.generate(
         8,
         (index) => BoardListsData(
+          header: Text('THIS IS HEADER'),
           backgroundColor: Colors.transparent,
             items: List.generate(
           50,

@@ -106,6 +106,7 @@ class BoardProvider extends ChangeNotifier {
           headerBackgroundColor: data[i].headerBackgroundColor,
           footerBackgroundColor: data[i].footerBackgroundColor,
           backgroundColor: data[i].backgroundColor,
+          header:data[i].header ,
           items: listItems,
           width: data[i].width,
           scrollController: ScrollController(),

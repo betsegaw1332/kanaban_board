@@ -261,7 +261,8 @@ class _BoardListState extends ConsumerState<BoardList> {
                         : null,
                   )
                 : Column(key: ValueKey("LIST ${widget.index}"), children: [
-                    //  prov.board.lists[widget.index].footer??GestureDetector(
+                     prov.board.lists[widget.index].header??const SizedBox.shrink(),
+                    //  GestureDetector(
                     //   onLongPress: () {
                     //     // listProv.onListLongpress(
                     //     //     listIndex: widget.index,
@@ -280,7 +281,7 @@ class _BoardListState extends ConsumerState<BoardList> {
                     //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     //       children: [
                     //         Text(
-                    //           prov.board.lists[widget.index].title,
+                    //           '${ prov.board.lists[widget.index].footer==null}',
                     //           style: prov.board.textStyle ??
                     //               const TextStyle(
                     //                   fontSize: 17,
